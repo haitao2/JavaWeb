@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--配置环境-->
+    <environments default="mysql">
+        <!--配置mysql环境-->
+        <environment id="mysql">
+            <!--配置事务的类型-->
+            <transactionManager type="JDBC"></transactionManager>
+            <!--配置数据源-->
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://172.16.4.14:3306/test"/>
+                <property name="username" value="root"/>
+                <property name="password" value="Root#123"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!--可以有两种配置方式:
+    1.配置文件的形式(resource/com/lht/studay/dao/ITestDao.xml),指定映射配置文件位置，映射文件指的是每个dao独立的配置文件
+        <mapper resource="com/lht/studay/dao/ITestDao.xml"/>
+    2.使用注解的形式，指定注解的全限定名称。
+        <mapper class="com.lht.studay.dao.ITestDaoAnotation"/>
+    -->
+    <mappers>
+        <mapper class="com.lht.studay.dao.ITestDaoAnotation"/>
+    </mappers>
+</configuration>

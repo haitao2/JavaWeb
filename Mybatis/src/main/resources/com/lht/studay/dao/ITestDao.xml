@@ -1,0 +1,12 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+ITestDao.xml必须要和ITestDao.java名称一一对应，目录结构也需要保持一致。
+-->
+<mapper namespace="com.lht.studay.dao.ITestDao">
+    <!--配置查询所有,id需要和ITestDao中的方法名称一样,resultType是告诉框架查询结果映射为哪个实体-->
+    <select id="findAll" resultType="com.lht.studay.domain.Test">
+        select * from test
+    </select>
+</mapper>
