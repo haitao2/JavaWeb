@@ -4,10 +4,19 @@ import java.io.Serializable;
 
 public class Test implements Serializable {
     private int id;
-    private int age;
+    private int uid;
     private int score3;
     private int score5;
 
+    public Test() {
+    }
+
+    public Test(int id, int age, int score3, int score5) {
+        this.id = id;
+        this.uid = age;
+        this.score3 = score3;
+        this.score5 = score5;
+    }
     public int getId() {
         return id;
     }
@@ -17,11 +26,11 @@ public class Test implements Serializable {
     }
 
     public int getAge() {
-        return age;
+        return uid;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setAge(int uid) {
+        this.uid = uid;
     }
 
     public int getScore3() {
@@ -44,7 +53,7 @@ public class Test implements Serializable {
     public String toString() {
         return "Test{" +
                 "id=" + id +
-                ", age=" + age +
+                ", uid=" + uid +
                 ", score3=" + score3 +
                 ", score5=" + score5 +
                 '}';

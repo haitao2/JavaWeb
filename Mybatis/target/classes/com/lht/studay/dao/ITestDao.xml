@@ -5,8 +5,44 @@
 ITestDao.xml必须要和ITestDao.java名称一一对应，目录结构也需要保持一致。
 -->
 <mapper namespace="com.lht.studay.dao.ITestDao">
-    <!--配置查询所有,id需要和ITestDao中的方法名称一样,resultType是告诉框架查询结果映射为哪个实体-->
-    <select id="findAll" resultType="com.lht.studay.domain.Test">
+    <!--提取公共sql片段-->
+    <sql id="defaultSql">
         select * from test
+    </sql>
+    <!--配置查询所有,id需要和ITestDao中的方法名称一样,resultType是告诉框架查询结果映射为哪个实体-->
+    <select id="findAll" resultType="test">
+        select * from test
+    </select>
+    <insert id="saveTest" parameterType="test">
+        insert into test (id,age,score3,score5) values(#{id},#{age},#{score3},#{score5});
+    </insert>
+    <select id="findById" resultType="test">
+        select * from test where id=#{id}
+    </select>
+    <select id="findByTest" parameterType="test" resultType="test">
+
+        <include refid="defaultSql"></include>
+        <where>
+            <if test="age!=null">
+                age=#{age}
+            </if>
+        </where>
+    </select>
+    <select id="findByIds" parameterType="queryVo" resultType="test">
+        <include refid="defaultSql"></include>
+        <where>
+            <if test="ids!=null">
+            <!--
+            collection:代表要遍历的集合元素
+            open:语句的开始部分
+            close:语句的结束部分
+            item:代表遍历集合的每个元素，生成变量名
+            sperator:分隔符
+            -->
+                <foreach collection="ids" open="id in(" close=")" item="uid" separator=",">
+                    #{uid}
+                </foreach>
+            </if>
+        </where>
     </select>
 </mapper>
