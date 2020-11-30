@@ -5,7 +5,7 @@
     <!--一对一查询-->
     <!--建立对应关系-->
     <resultMap id="userMap" type="user">
-        <id column="id" property="UId"/>
+        <id column="uid" property="UId"/>
         <result column="name" property="name"/>
         <!--用于指定从表方的应用实体属性的-->
         <association property="test" javaType="test">
@@ -43,4 +43,18 @@
     <select id="findAll2" resultMap="userMap1">
         select * from user u left join test t on u.uid=t.uid;
     </select>
+
+    <!-- 懒加载
+    -->
+    <resultMap id="userMap2" type="user">
+        <id column="id" property="UId"/>
+        <result column="name" property="name"/>
+        <!--用于指定从表方的应用实体属性的-->
+        <association property="test" javaType="test" select="com.lht.studay.dao.ITestDao.findById" column="uid">
+        </association>
+    </resultMap>
+    <select id="findAll3" resultMap="userMap2">
+        select * from user;
+    </select>
+
 </mapper>

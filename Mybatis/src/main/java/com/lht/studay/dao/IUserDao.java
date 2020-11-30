@@ -7,4 +7,5 @@ import java.util.List;
 public interface IUserDao {
     List<User> findAll();
     List<User> findAll2();
+    List<User> findAll3();
 }

@@ -3,12 +3,18 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+    <!--开启延迟加载-->
+    <settings>
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <setting name="aggressiveLazyLoading" value="false"/>
+    </settings>
     <typeAliases>
         <!--单个类别名配置
         <typeAlias type="com.lht.studay.domain.Test" alias="test"/>-->
         <!--包别名配置，扫描当前包，别名为类名，首字母大小写都行-->
         <package name="com.lht.studay.domain"/>
     </typeAliases>
+
     <!--配置环境-->
     <environments default="mysql">
         <!--配置mysql环境-->
@@ -30,6 +36,7 @@
     2.使用注解的形式，指定注解的全限定名称。
         <mapper class="com.lht.studay.dao.ITestDaoAnotation"/>
     -->
+
     <mappers>
         <mapper resource="com/lht/studay/dao/ITestDao.xml"/>
         <mapper class="com.lht.studay.dao.IUserDao"/>

@@ -113,6 +113,10 @@ public class JdbcTest {
             //System.out.println(user.getName());
         }
     }
+
+    /**
+     * 一对多
+     */
     @org.junit.Test
     public void testFindAll2(){
         for (User user:iUserDao.findAll2()){
@@ -120,4 +124,15 @@ public class JdbcTest {
         }
     }
 
+    /**
+     * 一对一懒加载
+     */
+    @org.junit.Test
+    public void testFindAll3(){
+        for (User user:iUserDao.findAll3()){
+            System.out.println(user.getUId()
+            );
+            //System.out.println(user.getList().get(0).getId());
+        }
+    }
 }
